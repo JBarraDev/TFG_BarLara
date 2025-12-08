@@ -1,0 +1,20 @@
+# Desactivar el listado de directorios en todo el proyecto
+Options -Indexes
+
+# Prevenir acceso directo a archivos sensibles
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|bak)$">
+	Order Allow,Deny
+	Deny from all
+</FilesMatch>
+
+# Proteger archivos de configuración PHP (solo en app/config y app/helpers)
+<FilesMatch "^(config|database|session|carrito|valoraciones)\.php$">
+	<If "%{REQUEST_URI} =~ m#/app/(config|helpers)/#">
+		Order Allow,Deny
+		Deny from all
+	</If>
+</FilesMatch>
+
+# Ocultar información del servidor
+ServerSignature Off
+
