@@ -17,7 +17,7 @@
 			if (slides.length === 0) return;
 			
 			slides[currentSlide].classList.remove('active');
-			currentSlide = (currentSlide + 1) % slides.length;
+			currentSlide = (currentSlide + 1) % slides.length; // Hace que vuelva al principio cuando llegue al final
 			slides[currentSlide].classList.add('active');
 		}
 
@@ -41,7 +41,7 @@
 			startCarousel();
 		}
 
-		// Pausar en hover (opcional)
+		// Pausar en hover
 		var heroSection = document.querySelector('.hero-section');
 		if (heroSection) {
 			heroSection.addEventListener('mouseenter', stopCarousel);
